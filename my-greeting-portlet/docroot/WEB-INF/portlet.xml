@@ -4,7 +4,7 @@
 	<portlet>
 		<portlet-name>my-greeting</portlet-name>
 		<display-name>My Greeting</display-name>
-		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
+		<portlet-class>com.liferay.samples.MyGreetingPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/view.jsp</value>

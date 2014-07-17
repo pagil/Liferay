@@ -10,29 +10,16 @@
 
 <%
 PortletPreferences prefs = renderRequest.getPreferences();
-String greeting = renderRequest.getParameter("greeting"); 
-if (greeting != null) {
-    prefs.setValue("greeting", greeting);
-    prefs.store();
+String greeting = (String) prefs.getValue("greeting", "Hello! Welcome to our portal.");
 %>
 
-<p>Greeting saved successfully!</p>
-
-<%
-}
-%>
-
-<%
-greeting = (String) prefs.getValue("greeting", "Hello! Welcome to our portal.");
-%>
-
-<portlet:renderURL var="editGreetingURL">
+<portlet:actionURL var="editGreetingURL">
 	<portlet:param name="mvcPath" value="/edit.jsp"/>
-</portlet:renderURL>
+</portlet:actionURL>
 
 <aui:form action="<%= editGreetingURL %>" method="post">
 	<aui:input label="greeting" name="greeting" type="text" value="<%= greeting %>"></aui:input>
-	<aui:button type="submit"></aui:button>
+	<aui:button type="submit" value="Set new greeting"></aui:button>
 </aui:form>
 
 <portlet:renderURL var="viewGreetingURL">
