@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="event-listener-portlet" basedir="." default="deploy">
+	<import file="C:\liferay-plugins-sdk-6.2.0\portlets/build-common-portlet.xml" />
+</project>
