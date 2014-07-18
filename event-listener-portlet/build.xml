@@ -2,5 +2,5 @@
 <!DOCTYPE project>
 
 <project name="event-listener-portlet" basedir="." default="deploy">
-	<import file="C:\liferay-plugins-sdk-6.2.0\portlets/build-common-portlet.xml" />
+	<import file="/opt/liferay-plugins-sdk-6.2/portlets/build-common-portlet.xml" />
 </project>
