@@ -7,6 +7,8 @@ import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
 import javax.portlet.PortletPreferences;
 
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 public class MyGreetingPortlet extends MVCPortlet {
@@ -18,9 +20,15 @@ public class MyGreetingPortlet extends MVCPortlet {
         PortletPreferences prefs = actionRequest.getPreferences();
         String greeting = actionRequest.getParameter("greeting");
 
-        if (greeting != null) {
+        try {
+            if (greeting == null || greeting.length() == 0) {
+                throw new IllegalArgumentException("You are trying to set empty greeting!");
+            }
             prefs.setValue("greeting", greeting);
             prefs.store();
+            SessionMessages.add(actionRequest, "success");
+        } catch (Exception e) {
+            SessionErrors.add(actionRequest, "error");
         }
 
         super.processAction(actionRequest, actionResponse);
