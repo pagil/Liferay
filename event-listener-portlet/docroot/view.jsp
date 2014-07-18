@@ -1,24 +1,32 @@
-<%
-/**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-%>
-
+<%@page import="com.liferay.portal.theme.PortletDisplay"%>
+<%@page import="com.liferay.portal.kernel.util.WebKeys"%>
+<%@page import="com.liferay.portal.theme.ThemeDisplay"%>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
 <portlet:defineObjects />
 
-This is the <b>Event Listener</b> portlet.<br>
-This portlet displays Event information produced by <b>Event Producer</b> portlet.<br>
 
-The value is <b><%= request.getParameter("id1") %></b>
+<%
+// Get the Portlet ID for this INSTANCIABLE (several instances are allowed on a page) portlet.
+ThemeDisplay themeDisplay= (ThemeDisplay)renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
+PortletDisplay portletDisplay= themeDisplay.getPortletDisplay();
+String portletId= portletDisplay.getId();
+%>
+
+<p>This is the <b>Event Listener</b> portlet View Page.</p>
+<p style="color:blue;">(PortletID=<%= portletId %>)</p>
+<p>This portlet displays Event information produced by <b>Event Producer</b> portlet.</p>
+
+<%
+String value = request.getParameter("id1");
+if (value == null) {
+%>
+<p style="color:red;">The event has not been fired yet.</p>
+<%
+} else {
+%>
+<p style="color:green;">The event has been fired:</p>
+<p style="font-weight:bold;color:green;"><%= value %></p>
+<%
+}
+%>
