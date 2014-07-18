@@ -13,7 +13,8 @@ public class EventProducerPortlet extends MVCPortlet {
     @Override
     public void processAction(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException,
             PortletException {
-        actionResponse.setRenderParameter("id1", "someIdValue");
+        actionResponse.setRenderParameter("id1", "EventA");
+        System.out.println("VYAFIMCHYK: Action processed!!!");
     }
 
 }

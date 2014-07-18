@@ -1,34 +1,27 @@
-<%@page import="com.liferay.portal.model.PortletPreferences"%>
-<%
-/**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
- */
-%>
+<%@page import="java.util.Map"%>
+<%@page import="javax.portlet.PortletPreferences"%>
 
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
 
 <portlet:defineObjects />
 
-This is the <b>Event Producer</b> portlet.<br>
-Please, press a button below to fire the action:<br><br>
+This is the <b>Event Producer</b> portlet View Page.<br>
+<%
+String value = request.getParameter("id1");
+if (value == null) {
+%>
+<p style="color:red;">You have not fired any action.</p>
+<%
+} else {
+%>
+<p style="color:green;">You have fired action. Render parameter value is set to:</p>
+<p style="font-weight:bold;color:green;"><%= value %></p>
+<%
+}
+%>
+<portlet:renderURL var="editFireActionURL">
+	<portlet:param name="mvcPath" value="/edit.jsp"/>
+</portlet:renderURL>
 
-<aui:button name="fireEventA" onClick="alert('EventA fired!');" value="Fire EventA" ></aui:button>
-
-<portlet:actionURL var="fireActionURL">
-	<portlet:param name="mvcPath" value="/view.jsp"/>
-</portlet:actionURL>
-
-<aui:form action="<%= fireActionURL %>" method="get">
-	<aui:button type="submit"></aui:button>
-</aui:form>
+<p><a href="<%= editFireActionURL %>">Fire Action</a></p>
