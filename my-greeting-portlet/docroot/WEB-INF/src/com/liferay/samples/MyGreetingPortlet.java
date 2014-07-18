@@ -13,8 +13,7 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 
 public class MyGreetingPortlet extends MVCPortlet {
 
-    @Override
-    public void processAction(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException,
+    public void setGreeting(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException,
             PortletException {
 
         PortletPreferences prefs = actionRequest.getPreferences();
@@ -31,6 +30,20 @@ public class MyGreetingPortlet extends MVCPortlet {
             SessionErrors.add(actionRequest, "error");
         }
 
-        super.processAction(actionRequest, actionResponse);
+    }
+
+    public void sendEmail(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException,
+            PortletException {
+        String email = actionRequest.getParameter("email");
+        try {
+            if (email == null || email.length() == 0) {
+                throw new IllegalArgumentException("Email is not specified.");
+            }
+            System.out.println("Email address: " + email);
+            System.out.println("Email has been sent!!!");
+            SessionMessages.add(actionRequest, "emailSentSuccesfully");
+        } catch (Exception e) {
+            SessionErrors.add(actionRequest, "emailSendingFailed");
+        }
     }
 }

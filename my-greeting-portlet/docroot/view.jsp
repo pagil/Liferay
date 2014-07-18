@@ -6,7 +6,10 @@
 <portlet:defineObjects />
 
 <liferay-ui:success key="success" message="Greeting saved seccesfully!" />
-<liferay-ui:error key="error" message="Sorry, an error prevented saving your greeting" />
+<liferay-ui:error key="error" message="Sorry, an error prevented saving your greeting." />
+
+<liferay-ui:success key="emailSentSuccesfully" message="Email sent succesfully!" />
+<liferay-ui:error key="emailSendingFailed" message="Sorry, an error prevented sending your email." />
 
 <%
 PortletPreferences prefs = renderRequest.getPreferences();
