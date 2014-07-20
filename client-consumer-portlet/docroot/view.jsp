@@ -15,8 +15,8 @@ PortletDisplay portletDisplay = themeDisplay.getPortletDisplay();
 String portletId = portletDisplay.getId();
 %>
 
-<p>Portlet ID = <%= portletId %> </p>
-<p id='messagePlaceHolder<portlet:namespace />'></p>
+<p style="color:blue;">Portlet ID = <%= portletId %> </p>
+<p id='messagePlaceHolder<portlet:namespace />' style="color:green;"></p>
 <script type="text/javascript">
 	Liferay.on(
 		'CUSTOM_ACTION',
