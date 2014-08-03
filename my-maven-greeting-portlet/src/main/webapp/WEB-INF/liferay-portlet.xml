@@ -5,6 +5,9 @@
 	<portlet>
 		<portlet-name>my-maven-greeting-portlet</portlet-name>
 		<icon>/icon.png</icon>
+		<friendly-url-mapper-class>com.liferay.portal.kernel.portlet.DefaultFriendlyURLMapper</friendly-url-mapper-class>
+		<friendly-url-mapping>my-greeting</friendly-url-mapping>
+		<friendly-url-routes>com/liferay/samples/my-greeting-friendly-url-routes.xml</friendly-url-routes>
 		<instanceable>false</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
